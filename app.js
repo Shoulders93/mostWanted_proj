@@ -160,3 +160,5 @@ function customValidation(input){
 }
 
 //#endregion
+
+"use strict"
