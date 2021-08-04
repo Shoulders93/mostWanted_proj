@@ -160,8 +160,3 @@ function customValidation(input){
 }
 
 //#endregion
-
-"use strict"
-
-let word = "Hello World"
-console.log(word);
