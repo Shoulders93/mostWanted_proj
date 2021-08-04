@@ -16,6 +16,7 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
+      searchResults = searchByEyeColor(people);
       break;
       default:
     app(people); // restart app
@@ -84,11 +85,54 @@ function searchByName(people){
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
+  let eyeColor = promptFor("What is the person's eye color?", autoValid);
+  let foundEyeColor = people.filter(function(potentialMatch){
+    if(potentialMatch.eyeColor === eyeColor){
+      return true;
+    } 
+    else {
+      return false;
+    }
+  })
+  return displayPeople(foundEyeColor);
+}
+
+function searchByGender(people){
+
+}
+
+function searchByDob(people){
+
+}
+
+function searchByHeight(people){
+
+}
+
+function searchByWeight(people){
+
+}
+
+function searchByOccupation(people){
+
+}
+
+function searchByParents(people){
+
+}
+
+function searchByCurrentSpouse(people){
 
 }
 
 //TODO: add other trait filter functions here.
 
+
+// First, the user inputs the trait they want to search by (eye color)
+// Next, the user input the search term they want to use (brown)
+// Finally, use the filter method to return all the results whose chosen trait matches the search term
+// You may or may not end up console logging these results. You could do this to help the dev process, 
+// but ideally you will want to display these in an alert for the user
 
 
 //#endregion
@@ -127,13 +171,17 @@ function displayPerson(person){
 //response: Will capture the user input.
 //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
+
+
+
+
 function promptFor(question, valid){
   let response;
   let isValid;
   do{
     response = prompt(question).trim();
     isValid = valid(response);
-  } while(response !== ""  ||  isValid === false)
+  } while(response === ""  ||  isValid === false)
   return response
 }
 
@@ -163,5 +211,3 @@ function customValidation(input){
 
 "use strict"
 
-let word = "Hello World"
-console.log(word);
