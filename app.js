@@ -27,19 +27,23 @@ function app(people){
 }
 
 function searchByMultipleTraits(traits){
-  let userResponse = promptFor("Would you like to select by additional traits? Enter yes or no", autoValid);
+  let userResponse = promptFor("Would you like to select by additional traits? Enter '1' for gender, '2' for Height, '3' for eye color", autoValid);
   let dataSubSet = data
   let promptAgain = true
     while(promptAgain){
+      userResponse = prompt("What trait do you want to include next? Enter '1' for gender, '2' for Height, '3' for eye color" ); // still prompting twice
       // prompt for a choice 
       switch (userResponse){
-        case 'yes':
+        case '1':
           dataSubSet = searchByGender(dataSubSet) // move into switch/case
+          break;
         // datasbutset = search
         case '2':
           dataSubSet = searchByHeight(dataSubSet)
+          break;
         case '3':
           dataSubSet = searchByEyeColor(dataSubSet)
+          break;
         // case '4':
         //   dataSubSet = searchByWeight(dataSubSet)
         // case '5':
