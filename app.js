@@ -16,6 +16,7 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
+      searchResults = searchByParents(people);
       break;
       default:
     app(people); // restart app
@@ -84,11 +85,117 @@ function searchByName(people){
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
+  let eyeColor = promptFor("What is the person's eye color?", autoValid);
+  let foundEyeColor = people.filter(function(potentialMatch){
+    if(potentialMatch.eyeColor === eyeColor){
+      return true;
+    } 
+    else {
+      return false;
+    }
+  })
+  return displayPeople(foundEyeColor);
+}
 
+function searchByGender(people){
+  let gender = promptFor(("What is the person's gender? male or female"), autoValid);
+  let foundGender = people.filter(function(potentialMatch){
+    if(potentialMatch.gender === gender){
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  return displayPeople(foundGender);
+}
+
+function searchByDob(people){
+  let dateOfBirth = promptFor("Do you know the person's date of birth? (xx/xx/xxxx)", autoValid);
+  let foundDateOfBirth = people.filter(function(potentialMatch){
+    if(potentialMatch.dateOfBirth === dateOfBirth){
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  return displayPeople(foundDateOfBirth);
+}
+
+function searchByHeight(people){
+  let height = promptFor("What is the person's height (inches)", autoValid);
+  let foundHeight = people.filter(function(potentialMatch){
+    if(potentialMatch.height === height){
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  return displayPeople(foundHeight);
+}
+
+function searchByWeight(people){
+  let weight = promptFor(("What is the person's weight (exact lbs)"), autoValid);
+  let foundWeight = people.filter(function(potentialMatch){
+    if(potentialMatch.weight === weight){
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  return displayPeople(foundWeight);
+}
+
+function searchByOccupation(people){
+  let occupation = promptFor(("What is the person's occupation"), autoValid);
+  let foundOccupation = people.filter(function(potentialMatch){
+    if(potentialMatch.occupation === occupation){
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  return displayPeople(foundOccupation);
+}
+
+function searchByParents(people){
+  let parents = promptFor(("Who is this person's parents?"), autoValid);
+  let foundParents = people.filter(function(potentialMatch){
+    if(potentialMatch.parents === parents){
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  return displayPeople(foundParents);
+}
+
+function searchByCurrentSpouse(people){
+  let spouse = promptFor(("Who is this person's spouse?"), autoValid);
+  let foundSpouse = people.filter(function(potentialMatch){
+    if(potentialMatch.spouse === spouse){
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  return displayPeople(foundSpouse);
 }
 
 //TODO: add other trait filter functions here.
 
+
+// First, the user inputs the trait they want to search by (eye color)
+// Next, the user input the search term they want to use (brown)
+// Finally, use the filter method to return all the results whose chosen trait matches the search term
+// You may or may not end up console logging these results. You could do this to help the dev process, 
+// but ideally you will want to display these in an alert for the user
 
 
 //#endregion
@@ -127,13 +234,17 @@ function displayPerson(person){
 //response: Will capture the user input.
 //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
+
+
+
+
 function promptFor(question, valid){
   let response;
   let isValid;
   do{
     response = prompt(question).trim();
     isValid = valid(response);
-  } while(response !== ""  ||  isValid === false)
+  } while(response === ""  ||  isValid === false)
   return response
 }
 
@@ -160,3 +271,6 @@ function customValidation(input){
 }
 
 //#endregion
+
+"use strict"
+
