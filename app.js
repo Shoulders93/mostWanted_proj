@@ -16,13 +16,22 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
-      searchResults = searchByParents(people);
+      // searchResults = searchByCurrentSpouse(people);
       break;
       default:
     app(people); // restart app
       break;
   }
-  
+  function searchByMultipleTraits(traits){
+    let firstTrait = promptFor("List the first trait the person has", autoValid);
+    let foundTrait = traits.filter(function(potentialMatch){
+      if(potentialMatch.firstTrait === firstTrait)
+      //How do we return the function that the user is inputting.  If they are looking for blue eyes, how do we run the search by eye color
+    })
+    
+    
+  }
+
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
 }
@@ -124,7 +133,7 @@ function searchByDob(people){
 }
 
 function searchByHeight(people){
-  let height = promptFor("What is the person's height (inches)", autoValid);
+  let height = parseInt(promptFor("What is the person's height (inches)", autoValid));
   let foundHeight = people.filter(function(potentialMatch){
     if(potentialMatch.height === height){
       return true;
@@ -137,7 +146,7 @@ function searchByHeight(people){
 }
 
 function searchByWeight(people){
-  let weight = promptFor(("What is the person's weight (exact lbs)"), autoValid);
+  let weight = parseInt(promptFor(("What is the person's weight (exact lbs)"), autoValid));
   let foundWeight = people.filter(function(potentialMatch){
     if(potentialMatch.weight === weight){
       return true;
@@ -176,7 +185,7 @@ function searchByParents(people){
 }
 
 function searchByCurrentSpouse(people){
-  let spouse = promptFor(("Who is this person's spouse?"), autoValid);
+  let spouse = parseInt(promptFor(("Who is this person's spouse?"), autoValid));
   let foundSpouse = people.filter(function(potentialMatch){
     if(potentialMatch.spouse === spouse){
       return true;
@@ -190,8 +199,16 @@ function searchByCurrentSpouse(people){
 
 //TODO: add other trait filter functions here.
 
+// Creat a function that searches multiple traits 
+// That function then steps into our indivdial trait functions
+// dispaly people who share those trait
+// Prommpt "is this any of the people you are looking for"
+// If yes, the variable searchResults becomes the name of the person who typed in
+// If no, return false and reurns the search process 
 
-// First, the user inputs the trait they want to search by (eye color)
+
+
+// First, the user inputs the trait(s) they want to search for
 // Next, the user input the search term they want to use (brown)
 // Finally, use the filter method to return all the results whose chosen trait matches the search term
 // You may or may not end up console logging these results. You could do this to help the dev process, 
