@@ -27,16 +27,51 @@ function app(people){
 }
 
 function searchByMultipleTraits(traits){
-  let firstTrait = promptFor("What trait would you like to search by? (gender, dob, height, weight, eye color, occupation", autoValid);
+  let multipleTraits = promptFor("What trait would you like to search by? (gender, height, weight, eye color, dob", autoValid);
   let foundTrait = traits.filter(function(potentialMatch){
-    if(potentialMatch.firstTrait === eyeColor){
-      return searchByEyeColor(); 
+    let promptAgain = true
+    while(promptAgain){
+      // prompt for a choice 
+      switch (multipleTraits){
+        case '1':
+          searchByGender;
+        // datasbutset = search
+        break;
+        case '2':
+          searchByHeight;
+          break;
+        case '3':
+          searchByEyeColor;
+          break;
+        case '4':
+          searchByWeight;
+          break;
+        case '5':
+          searchByDob;
+          break;
+        default:
+          displayPeople(dataSubSet)
+          break;
+        }
     }
-    // else(potentialMatch.firstTrait === gender){
+    // else(potentialMatch.firstTrait === firstTrait)
     //   return searchByGender();
     })
     return foundTrait;
-  }
+ }
+
+ function someTraitFilter(dataSet){
+   // prompt for choice
+   // filter dataset basedup upon the choice
+   return newDataSet
+ }
+
+//  let someResult = someTraitFilter(people)
+//  displayPeople(someResult)
+
+  // let someNewResult = someHeightFilter(someResult)
+  // displayPeople(someNewResult)
+
   
   //How do we return the function that the user is inputting.  If they are looking for blue eyes, how do we run the search by eye color
 // Menu function to call once you find who you are looking for
@@ -54,12 +89,15 @@ function mainMenu(person, people){
   switch(displayOption){
     case "info":
     // TODO: get person's info
+    // print out their gender, dob, height, weight, eyecolor, occupation
     break;
     case "family":
     // TODO: get person's family
+    // parents and current spouse
     break;
     case "descendants":
     // TODO: get person's descendants
+    // children, grandchildren
     break;
     case "restart":
     app(people); // restart
@@ -106,8 +144,12 @@ function searchByEyeColor(people){
       return false;
     }
   })
-  return displayPeople(foundEyeColor);
+  return foundEyeColor;
 }
+let dataSubSet = people
+
+dataSubSet = searchByEyeColor(dataSubSet) // move into switch/case statement
+displayPeople(dataSubSet)
 
 function searchByGender(people){
   let gender = promptFor(("What is the person's gender? male or female"), autoValid);
@@ -119,8 +161,11 @@ function searchByGender(people){
       return false;
     }
   })
-  return displayPeople(foundGender);
+  return foundGender;
 }
+
+dataSubSet = searchByGender(dataSubSet) // move into switch/case statement
+displayPeople(dataSubSet)
 
 function searchByDob(people){
   let dateOfBirth = promptFor("Do you know the person's date of birth? (xx/xx/xxxx)", autoValid);
@@ -132,7 +177,7 @@ function searchByDob(people){
       return false;
     }
   })
-  return displayPeople(foundDateOfBirth);
+  return foundDateOfBirth;
 }
 
 function searchByHeight(people){
@@ -145,7 +190,7 @@ function searchByHeight(people){
       return false;
     }
   })
-  return displayPeople(foundHeight);
+  return foundHeight;
 }
 
 function searchByWeight(people){
@@ -158,7 +203,7 @@ function searchByWeight(people){
       return false;
     }
   })
-  return displayPeople(foundWeight);
+  return foundWeight;
 }
 
 function searchByOccupation(people){
@@ -171,7 +216,7 @@ function searchByOccupation(people){
       return false;
     }
   })
-  return displayPeople(foundOccupation);
+  return foundOccupation;
 }
 
 function searchByParents(people){
@@ -184,7 +229,7 @@ function searchByParents(people){
       return false;
     }
   })
-  return displayPeople(foundParents);
+  return foundParents;
 }
 
 function searchByCurrentSpouse(people){
@@ -197,7 +242,7 @@ function searchByCurrentSpouse(people){
       return false;
     }
   })
-  return displayPeople(foundSpouse);
+  return foundSpouse;
 }
 
 //TODO: add other trait filter functions here.
