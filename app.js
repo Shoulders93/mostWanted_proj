@@ -32,9 +32,8 @@ function searchByMultipleTraits(traits){
     if(potentialMatch.firstTrait === eyeColor){
       return searchByEyeColor(); 
     }
-    else(potentialMatch.firstTrait === gender){
-      return searchByGender();
-    }
+    // else(potentialMatch.firstTrait === gender){
+    //   return searchByGender();
     })
     return foundTrait;
   }
