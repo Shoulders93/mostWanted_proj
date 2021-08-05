@@ -28,31 +28,32 @@ function app(people){
 
 function searchByMultipleTraits(traits){
   let multipleTraits = promptFor("What trait would you like to search by? (gender, height, weight, eye color, dob", autoValid);
+  let dataSubSet = data
   let foundTrait = traits.filter(function(potentialMatch){
     let promptAgain = true
     while(promptAgain){
       // prompt for a choice 
       switch (multipleTraits){
         case '1':
-          searchByGender;
+          dataSubSet = searchByGender(dataSubSet) // move into switch/case statement
         // datasbutset = search
         break;
         case '2':
-          searchByHeight;
+          dataSubSet = searchByHeight(dataSubSet) // move into switch/case statement
           break;
         case '3':
-          searchByEyeColor;
+          dataSubSet = searchByEyeColor(dataSubSet) // move into switch/case statement
           break;
         case '4':
-          searchByWeight;
+          dataSubSet = searchByWeight(dataSubSet) // move into switch/case statement
           break;
         case '5':
-          searchByDob;
+          dataSubSet = searchByDob(dataSubSet) // move into switch/case statement
           break;
         default:
-          displayPeople(dataSubSet)
           break;
         }
+        displayPeople(dataSubSet)
     }
     // else(potentialMatch.firstTrait === firstTrait)
     //   return searchByGender();
@@ -146,10 +147,7 @@ function searchByEyeColor(people){
   })
   return foundEyeColor;
 }
-let dataSubSet = people
-
-dataSubSet = searchByEyeColor(dataSubSet) // move into switch/case statement
-displayPeople(dataSubSet)
+// let dataSubSet = people
 
 function searchByGender(people){
   let gender = promptFor(("What is the person's gender? male or female"), autoValid);
@@ -164,8 +162,6 @@ function searchByGender(people){
   return foundGender;
 }
 
-dataSubSet = searchByGender(dataSubSet) // move into switch/case statement
-displayPeople(dataSubSet)
 
 function searchByDob(people){
   let dateOfBirth = promptFor("Do you know the person's date of birth? (xx/xx/xxxx)", autoValid);
