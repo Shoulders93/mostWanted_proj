@@ -16,26 +16,30 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
-      // searchResults = searchByCurrentSpouse(people);
+      searchResults = searchByMultipleTraits(people);
       break;
       default:
     app(people); // restart app
       break;
   }
-  function searchByMultipleTraits(traits){
-    let firstTrait = promptFor("List the first trait the person has", autoValid);
-    let foundTrait = traits.filter(function(potentialMatch){
-      if(potentialMatch.firstTrait === firstTrait)
-      //How do we return the function that the user is inputting.  If they are looking for blue eyes, how do we run the search by eye color
-    })
-    
-    
-  }
-
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
 }
 
+function searchByMultipleTraits(traits){
+  let firstTrait = promptFor("What trait would you like to search by? (gender, dob, height, weight, eye color, occupation", autoValid);
+  let foundTrait = traits.filter(function(potentialMatch){
+    if(potentialMatch.firstTrait === eyeColor){
+      return searchByEyeColor(); 
+    }
+    else(potentialMatch.firstTrait === gender){
+      return searchByGender();
+    }
+    })
+    return foundTrait;
+  }
+  
+  //How do we return the function that the user is inputting.  If they are looking for blue eyes, how do we run the search by eye color
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
