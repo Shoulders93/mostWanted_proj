@@ -27,40 +27,32 @@ function app(people){
 }
 
 function searchByMultipleTraits(traits){
-  let multipleTraits = promptFor("What trait would you like to search by? (gender, height, weight, eye color, dob", autoValid);
+  let userResponse = promptFor("Would you like to select by additional traits? Enter yes or no", autoValid);
   let dataSubSet = data
-  let foundTrait = traits.filter(function(potentialMatch){
-    let promptAgain = true
+  let promptAgain = true
     while(promptAgain){
       // prompt for a choice 
-      switch (multipleTraits){
-        case '1':
-          dataSubSet = searchByGender(dataSubSet) // move into switch/case statement
+      switch (userResponse){
+        case 'yes':
+          dataSubSet = searchByGender(dataSubSet) // move into switch/case
         // datasbutset = search
-        break;
         case '2':
-          dataSubSet = searchByHeight(dataSubSet) // move into switch/case statement
-          break;
+          dataSubSet = searchByHeight(dataSubSet)
         case '3':
-          dataSubSet = searchByEyeColor(dataSubSet) // move into switch/case statement
-          break;
-        case '4':
-          dataSubSet = searchByWeight(dataSubSet) // move into switch/case statement
-          break;
-        case '5':
-          dataSubSet = searchByDob(dataSubSet) // move into switch/case statement
-          break;
+          dataSubSet = searchByEyeColor(dataSubSet)
+        // case '4':
+        //   dataSubSet = searchByWeight(dataSubSet)
+        // case '5':
+        //   dataSubSet = searchByDob(dataSubSet)
         default:
+          promptAgain = false;
           break;
         }
-        displayPeople(dataSubSet)
-    }
-    // else(potentialMatch.firstTrait === firstTrait)
-    //   return searchByGender();
-    })
-    return foundTrait;
- }
-
+      }
+      displayPeople(dataSubSet);
+      return dataSubSet;
+}
+    
  function someTraitFilter(dataSet){
    // prompt for choice
    // filter dataset basedup upon the choice
