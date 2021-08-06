@@ -262,10 +262,14 @@ function displayPersonTraits(person){
   alert(personInfo); 
 }
 
+function displayPersonFamily(person){
+  let personInfo = "Parents " + person.parents;
+  alert(personInfo); 
+}
+
 function findDescendants(person){
-  
   let foundDescendant = data.filter(function(potentialMatch){
-    if (potentialMatch.id === data.parents){
+    if (person.parents.includes(potentialMatch.id)){
       return true;
     }
     else {
