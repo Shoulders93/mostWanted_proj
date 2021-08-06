@@ -63,8 +63,11 @@ function searchByMultipleTraits(arrayOfNumbers) {
   let thirdTrait = searchByWeight(secondTrait);
   let fourthTrait = searchByEyeColor(thirdTrait);
   // let fifthTrait = searchByDob(fourthTrait);
-  return fourthTrait;
+  displayPeople(fourthTrait);
+  return fifthTrait;
 }
+
+//code doesn't work unless you have all four traits. Need to come back to look at.
     
  function someTraitFilter(dataSet){
    // prompt for choice
@@ -90,7 +93,7 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch(displayOption){
     case "info":
