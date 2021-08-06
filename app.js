@@ -56,12 +56,22 @@ function searchByMultipleTraits(traits){
       displayPeople(dataSubSet);
       return dataSubSet;
 }
-    
+
+function searchByMultipleTraits(arrayOfNumbers) {
+  let firstTrait = searchByGender(arrayOfNumbers);
+  let secondTrait = searchByHeight(firstTrait);
+  let thirdTrait = searchByWeight(secondTrait);
+  let fourthTrait = searchByEyeColor(thirdTrait);
+  // let fifthTrait = searchByDob(fourthTrait);
+  displayPeople(fourthTrait);
+  return fifthTrait;    
+
  function someTraitFilter(dataSet){
    // prompt for choice
    // filter dataset basedup upon the choice
    return newDataSet
  }
+}
 
 //  let someResult = someTraitFilter(people)
 //  displayPeople(someResult)
@@ -81,7 +91,7 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch(displayOption){
     case "info":
