@@ -26,36 +26,7 @@ function app(people){
   mainMenu(searchResults, people);
 }
 
-function searchByMultipleTraits(traits){
-  let userResponse = promptFor("Would you like to select by additional traits? Enter '1' for gender, '2' for Height, '3' for eye color", autoValid);
-  let dataSubSet = data
-  let promptAgain = true
-    while(promptAgain){
-      userResponse = prompt("What trait do you want to include next? Enter '1' for gender, '2' for Height, '3' for eye color" ); // still prompting twice
-      // prompt for a choice 
-      switch (userResponse){
-        case '1':
-          dataSubSet = searchByGender(dataSubSet) // move into switch/case
-          break;
-        // datasbutset = search
-        case '2':
-          dataSubSet = searchByHeight(dataSubSet)
-          break;
-        case '3':
-          dataSubSet = searchByEyeColor(dataSubSet)
-          break;
-        // case '4':
-        //   dataSubSet = searchByWeight(dataSubSet)
-        // case '5':
-        //   dataSubSet = searchByDob(dataSubSet)
-        default:
-          promptAgain = false;
-          break;
-        }
-      }
-      displayPeople(dataSubSet);
-      return dataSubSet;
-}
+
 
 function searchByMultipleTraits(arrayOfNumbers) {
   let firstTrait = searchByGender(arrayOfNumbers);
@@ -65,22 +36,8 @@ function searchByMultipleTraits(arrayOfNumbers) {
   // let fifthTrait = searchByDob(fourthTrait);
   displayPeople(fourthTrait);
   return fifthTrait;    
-
- function someTraitFilter(dataSet){
-   // prompt for choice
-   // filter dataset basedup upon the choice
-   return newDataSet
- }
 }
 
-//  let someResult = someTraitFilter(people)
-//  displayPeople(someResult)
-
-  // let someNewResult = someHeightFilter(someResult)
-  // displayPeople(someNewResult)
-
-  
-  //How do we return the function that the user is inputting.  If they are looking for blue eyes, how do we run the search by eye color
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
@@ -93,8 +50,12 @@ function mainMenu(person, people){
 
   let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
+
   switch(displayOption){
-    case "info":
+    case "info": 
+      displayPersonTraits(person[0]);
+
+    
     // TODO: get person's info
     // print out their gender, dob, height, weight, eyecolor, occupation
     break;
@@ -153,7 +114,6 @@ function searchByEyeColor(people){
   })
   return foundEyeColor;
 }
-// let dataSubSet = people
 
 function searchByGender(people){
   let gender = promptFor(("What is the person's gender? male or female"), autoValid);
@@ -288,6 +248,18 @@ function displayPerson(person){
   alert(personInfo);
 }
 
+function displayPersonTraits(person){
+  let personInfo = "First Name: " + person.firstName + "\n";
+  personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "Gender: " + person.gender + "\n";
+  personInfo += "Date of Birth: " + person.dob + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo += "Weight: " + person.weight + "\n";
+  personInfo += "Eye Color: " + person.eyeColor + "\n";
+  personInfo += "Occupation: " + person.occupation + "\n";
+  alert(personInfo); 
+}
+
 //#endregion
 
 
@@ -338,4 +310,3 @@ function customValidation(input){
 }
 
 //#endregion
-
