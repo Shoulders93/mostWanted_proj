@@ -60,10 +60,12 @@ function mainMenu(person, people){
     // print out their gender, dob, height, weight, eyecolor, occupation
     break;
     case "family":
+      displayPersonFamily(person[0]);
     // TODO: get person's family
     // parents and current spouse
     break;
     case "descendants":
+      findDescendants(person[0]);
     // TODO: get person's descendants
     // children, grandchildren
     break;
@@ -260,8 +262,32 @@ function displayPersonTraits(person){
   alert(personInfo); 
 }
 
-//#endregion
+function findDescendants(person){
+  let foundDescendant = data.filter(function(potentialMatch){
+    if (potentialMatch.id === data.parents){
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  alert(foundDescendant);
+   return foundDescendant;
 
+}
+
+//#endregion
+// function findDescendants(personId) {
+  //  TODO filter find personID.parents[0] and persona.paerent[1]
+  // get that childs first/last name
+  // pass results (id, name, level of relationship)
+
+
+// }
+
+// Taker a person
+// search  database and find all children where id is parents 0 or 1
+// return result
 
 
 //Validation functions.
