@@ -263,6 +263,7 @@ function displayPersonTraits(person){
 }
 
 function findDescendants(person){
+  
   let foundDescendant = data.filter(function(potentialMatch){
     if (potentialMatch.id === data.parents){
       return true;
@@ -278,7 +279,7 @@ function findDescendants(person){
 
 //#endregion
 // function findDescendants(personId) {
-  //  TODO filter find personID.parents[0] and persona.paerent[1]
+  //  TODO filter find personID.parents[0] and person.parent[1]
   // get that childs first/last name
   // pass results (id, name, level of relationship)
 
