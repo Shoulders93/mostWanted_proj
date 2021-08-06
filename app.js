@@ -26,48 +26,36 @@ function app(people){
   mainMenu(searchResults, people);
 }
 
-// function searchByMultipleTraits(traits){
-//   let userResponse; // = promptFor("Would you like to select by additional traits? Enter '1' for gender, '2' for Height, '3' for eye color", autoValid);
-//   let dataSubSet = data
-//   let promptAgain = true
-//     while(promptAgain){
-//       userResponse = prompt("What trait do you want to include next? Enter '1' for gender, '2' for Height, '3' for eye color, or '6' to exit" ); // still prompting twice
-//       // prompt for a choice 
-//       switch (userResponse){
-//         case '1':
-//           dataSubSet = searchByGender(dataSubSet) // move into switch/case
-//           break;
-//         // datasbutset = search
-//         case '2':
-//           dataSubSet = searchByHeight(dataSubSet)
-//           break;
-//         case '3':
-//           dataSubSet = searchByEyeColor(dataSubSet)
-//           break;
-//         // case '4':
-//         //   dataSubSet = searchByWeight(dataSubSet)
-//         // case '5':
-//         //   dataSubSet = searchByDob(dataSubSet)
-//         default:
-//           promptAgain = false;
-//           break;
-//         }
-//       }
-//       // displayPeople(dataSubSet);
-//       return dataSubSet;
-// }
-
-function searchByMultipleTraits(arrayOfNumbers) {
-  let firstTrait = searchByGender(arrayOfNumbers);
-  let secondTrait = searchByHeight(firstTrait);
-  let thirdTrait = searchByWeight(secondTrait);
-  let fourthTrait = searchByEyeColor(thirdTrait);
-  // let fifthTrait = searchByDob(fourthTrait);
-  displayPeople(fourthTrait);
-  return fifthTrait;
+function searchByMultipleTraits(traits){
+  let userResponse = promptFor("Would you like to select by additional traits? Enter '1' for gender, '2' for Height, '3' for eye color", autoValid);
+  let dataSubSet = data
+  let promptAgain = true
+    while(promptAgain){
+      userResponse = prompt("What trait do you want to include next? Enter '1' for gender, '2' for Height, '3' for eye color" ); // still prompting twice
+      // prompt for a choice 
+      switch (userResponse){
+        case '1':
+          dataSubSet = searchByGender(dataSubSet) // move into switch/case
+          break;
+        // datasbutset = search
+        case '2':
+          dataSubSet = searchByHeight(dataSubSet)
+          break;
+        case '3':
+          dataSubSet = searchByEyeColor(dataSubSet)
+          break;
+        // case '4':
+        //   dataSubSet = searchByWeight(dataSubSet)
+        // case '5':
+        //   dataSubSet = searchByDob(dataSubSet)
+        default:
+          promptAgain = false;
+          break;
+        }
+      }
+      displayPeople(dataSubSet);
+      return dataSubSet;
 }
-
-//code doesn't work unless you have all four traits. Need to come back to look at.
     
  function someTraitFilter(dataSet){
    // prompt for choice
@@ -93,7 +81,7 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch(displayOption){
     case "info":
@@ -340,6 +328,4 @@ function customValidation(input){
 }
 
 //#endregion
-
-"use strict"
 
