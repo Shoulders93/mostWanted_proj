@@ -35,13 +35,19 @@ function searchByMultipleTraits(arrayOfNumbers) {
   let fourthTrait = searchByEyeColor(thirdTrait);
   let fifthTrait = searchByOccupation(fourthTrait);
   displayPeople(fifthTrait);
-  return fifthTrait;    
+  return fifthTrait;    //Issue is that you need all five traits for the function to work.
 }
 
+// Attempted to create switch case to run each individual function and changing the values to be smaller and smaller until it gets to one person, however it keeps relooping and starting
+// the function over and not saving the filtered values.
+
 // function searchByMultipleTraits(arrayOfNumbers){
-//   let userResponse = promptFor("Would you like to select by additional traits? Enter 'gender', 'height'", autoValid);
+//   let userResponse = promptFor("Would you like to select by additional traits? Enter 'gender', 'height', or 'no' to cancel", autoValid);
 //   let dataSubSet = data;
 //   let promptAgain = true;
+//     if(promptAgain = true){
+//       userResponse;
+//     }
 //     while(promptAgain){
 //       switch (userResponse){
 //         case 'gender': // userResponse goes into the switch/case, but then it doesn't loop back to userResponse to ask if you want to search by additional traits.
@@ -50,11 +56,15 @@ function searchByMultipleTraits(arrayOfNumbers) {
 //         case 'height': // each switch/case only goes to the first person it finds.
 //           dataSubSet = searchByHeight(dataSubSet)
 //           break;
+//         case 'no':
+//           promptAgain = false;
+//           break;
 //         default:
 //           promptAgain = false;
 //           break;
 //       }
-//       return userResponse;
+//       displayPeople(dataSubSet);
+//       return dataSubSet;
 //     }
 // }
 
