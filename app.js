@@ -33,10 +33,30 @@ function searchByMultipleTraits(arrayOfNumbers) {
   let secondTrait = searchByHeight(firstTrait);
   let thirdTrait = searchByWeight(secondTrait);
   let fourthTrait = searchByEyeColor(thirdTrait);
-  // let fifthTrait = searchByDob(fourthTrait);
-  displayPeople(fourthTrait);
+  let fifthTrait = searchByOccupation(fourthTrait);
+  displayPeople(fifthTrait);
   return fifthTrait;    
 }
+
+// function searchByMultipleTraits(arrayOfNumbers){
+//   let userResponse = promptFor("Would you like to select by additional traits? Enter 'gender', 'height'", autoValid);
+//   let dataSubSet = data;
+//   let promptAgain = true;
+//     while(promptAgain){
+//       switch (userResponse){
+//         case 'gender': // userResponse goes into the switch/case, but then it doesn't loop back to userResponse to ask if you want to search by additional traits.
+//           dataSubSet = searchByGender(dataSubSet)
+//           break;
+//         case 'height': // each switch/case only goes to the first person it finds.
+//           dataSubSet = searchByHeight(dataSubSet)
+//           break;
+//         default:
+//           promptAgain = false;
+//           break;
+//       }
+//       return userResponse;
+//     }
+// }
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
